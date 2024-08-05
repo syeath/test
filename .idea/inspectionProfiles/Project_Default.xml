@@ -15,6 +15,7 @@
         <function importPath="fmt" name="Sscanf" />
         <function importPath="fmt" name="Fprintln" />
         <function importPath="web/utils" name="WriteText" />
+        <function importPath="web/utils/file" name="WriteText" />
       </functions>
       <methods>
         <method importPath="bytes" receiver="*Buffer" name="WriteString" />
@@ -29,6 +30,7 @@
         <method importPath="hash" receiver="Hash" name="Write" />
         <method importPath="os" receiver="*File" name="Close" />
         <method importPath="github.com/gocarina/gocsv" receiver="*SafeCSVWriter" name="Write" />
+        <method importPath="flag" receiver="*FlagSet" name="Parse" />
       </methods>
     </inspection_tool>
   </profile>

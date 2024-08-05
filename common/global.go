@@ -25,14 +25,12 @@ var (
 			"-title",
 			"-status-code",
 			"-tech-detect",
-			"-l",
 		},
 		// 爆破子域名
 		"domain": []string{
 			"-title",
 			"-status-code",
 			"-tech-detect",
-			"-l",
 		},
 		// c段探测
 		"c": []string{},
