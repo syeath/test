@@ -1,0 +1,14 @@
+	transport := &http.Transport{}
+	transport.TLSClientConfig = &tls.Config{InsecureSkipVerify: true}
+	if proxySetting == "" {
+		// 创建一个不验证证书的 HTTP 客户端
+		dialer, err := proxy.SOCKS5("tcp", "127.0.0.1:7890", nil, proxy.Direct)
+		if err != nil {
+			return nil, fmt.Errorf("代理连接失败")
+		}
+		dialContextFunc := func(ctx context.Context, network, addr string) (net.Conn, error) {
+			return dialer.Dial(network, addr)
+		}
+		transport.TLSClientConfig = &tls.Config{InsecureSkipVerify: true}
+		transport.DialContext = dialContextFunc
+	}
