@@ -14,10 +14,12 @@ func main() {
 	if len(os.Args) < 2 {
 		fmt.Println()
 		fmt.Println("Usage: main.exe <command> [<args>]")
-		fmt.Println("Available commands are:")
+		fmt.Println()
 		fmt.Println("  extract	提取域名和ip")
-		fmt.Println("  domain	子域名字典爆破")
-		fmt.Printf("  path		路径爆破\n\n")
+		fmt.Println("  finger	指纹识别")
+		fmt.Println("  domain	子域名、端口收集")
+		fmt.Println("  path		目录爆破")
+		fmt.Println("  poc		poc识别")
 		return
 	}
 
@@ -64,11 +66,12 @@ func main() {
 	default:
 		fmt.Println()
 		fmt.Println("Usage: main.exe <command> [<args>]")
-		fmt.Println("Available commands are:")
+		fmt.Println()
 		fmt.Println("  extract	提取域名和ip")
 		fmt.Println("  finger	指纹识别")
-		fmt.Println("  domain	子域名字典爆破")
-		fmt.Printf("  path		路径爆破\n\n")
+		fmt.Println("  domain	子域名、端口收集")
+		fmt.Println("  path		目录爆破")
+		fmt.Println("  poc		poc识别")
 	}
 
 	//// 提取域名和ip

@@ -13,7 +13,7 @@ import (
 
 // GetTitle httpx匹配出标题
 func GetTitle(args []string) {
-	fileName := "123"
+	fileName := args[0]
 	// 获取保存文件的绝对路径
 	executablePath, _ := os.Executable()
 	outputPath := fmt.Sprintf("%s\\%s", filepath.Dir(executablePath), fileName)

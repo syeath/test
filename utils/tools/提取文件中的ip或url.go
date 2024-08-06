@@ -35,7 +35,6 @@ func ParseDomainIP(args []string) {
 
 	// 定义正则
 	urlRegex := regexp.MustCompile(common.URLPattern)
-	ipRegex := regexp.MustCompile(common.IPPattern)
 
 	var results []string
 
@@ -45,14 +44,15 @@ func ParseDomainIP(args []string) {
 		for _, url := range urls {
 			results = append(results, url)
 		}
-		// 提取 ip 地址
-		ipMatches := ipRegex.FindAllString(line, -1)
-		for _, ip := range ipMatches {
-			results = append(results, ip)
-		}
 	}
 
 	for _, v := range results {
-		file.WriteText(*extractOutputFile, v)
+		correctedMatch := strings.ReplaceAll(v, "：", ":")
+		// 检查是否已包含 http 或 https 协议
+		if !strings.HasPrefix(correctedMatch, "http://") && !strings.HasPrefix(correctedMatch, "https://") {
+			// 添加 https 协议
+			correctedMatch = "https://" + correctedMatch
+		}
+		file.WriteText(*extractOutputFile, correctedMatch)
 	}
 }
