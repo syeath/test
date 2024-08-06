@@ -9,13 +9,20 @@ require (
 	github.com/chainreactors/fingers v1.0.1-0.20240730173434-48ba7446b94b // indirect
 	github.com/chainreactors/logs v0.0.0-20240207121836-c946f072f81f // indirect
 	github.com/chainreactors/utils v0.0.0-20240716182459-e85f2b01ee16 // indirect
+	github.com/cpuguy83/go-md2man/v2 v2.0.4 // indirect
 	github.com/expr-lang/expr v1.16.9 // indirect
 	github.com/facebookincubator/nvdtools v0.1.5 // indirect
 	github.com/go-dedup/megophone v0.0.0-20170830025436-f01be21026f5 // indirect
 	github.com/go-dedup/simhash v0.0.0-20170904020510-9ecaca7b509c // indirect
 	github.com/go-dedup/text v0.0.0-20170907015346-8bb1b95e3cb7 // indirect
+	github.com/inconshreveable/mousetrap v1.1.0 // indirect
 	github.com/mozillazg/go-pinyin v0.20.0 // indirect
 	github.com/pkg/errors v0.9.1 // indirect
+	github.com/russross/blackfriday/v2 v2.1.0 // indirect
+	github.com/spf13/cobra v1.8.1 // indirect
+	github.com/spf13/pflag v1.0.5 // indirect
 	github.com/twmb/murmur3 v1.1.8 // indirect
+	github.com/urfave/cli/v2 v2.27.3 // indirect
+	github.com/xrash/smetrics v0.0.0-20240521201337-686a1a2994c1 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 )

@@ -1,7 +1,6 @@
 package tools
 
 import (
-	"flag"
 	"fmt"
 	"regexp"
 	"strings"
@@ -9,23 +8,9 @@ import (
 	"web/utils"
 )
 
-func ParseDomainIP(args []string) {
+func ParseDomainIP(inoutFileName, outPutFileName string, isSurvive bool) {
 
-	extractCmd := flag.NewFlagSet("extract", flag.ExitOnError)
-	// 定义命令行参数
-	extractInputFile := extractCmd.String("f", "", "批量请求的url文件")
-	extractOutputFile := extractCmd.String("o", "", "保存到txt文件中")
-	extractHelp := extractCmd.Bool("h", false, "显示帮助信息")
-
-	extractCmd.Parse(args)
-
-	if *extractHelp || *extractInputFile == "" {
-		fmt.Println("Usage of extract:")
-		extractCmd.PrintDefaults()
-		return
-	}
-
-	fileCtx, err := utils.ReadText(*extractInputFile)
+	fileCtx, err := utils.ReadText(inoutFileName)
 	if err != nil {
 		fmt.Println(err)
 		return
@@ -53,6 +38,10 @@ func ParseDomainIP(args []string) {
 			// 添加 https 协议
 			correctedMatch = "https://" + correctedMatch
 		}
-		utils.WriteText(*extractOutputFile, correctedMatch)
+		utils.WriteText(outPutFileName, correctedMatch)
+	}
+	// 是否探测存活
+	if isSurvive {
+		GetTitle(outPutFileName)
 	}
 }

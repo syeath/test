@@ -9,3 +9,14 @@
 额外添加的功能
 1. 目录扫描 
 2. poc扫描
+
+导入依赖
+```go
+go get github.com/chainreactors/fingers@master
+go get -u github.com/spf13/cobra@latest
+```
+
+
+```go
+go get -u github.com/gocarina/gocsv
+```

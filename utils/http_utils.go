@@ -11,19 +11,8 @@ import (
 	"time"
 )
 
-var admin = []string{
-	"admin.php",
-	"admin",
-	"adm.php",
-	"user.php",
-	"user",
-	"index/login.php",
-	"login.php",
-	"login",
-}
-
 // SendHttp 发起请求
-func SendHttp(adminSetting, proxySetting, headerSetting, method, url string) (*http.Response, string, error) {
+func SendHttp(proxySetting, headerSetting, method, url string) (*http.Response, error) {
 	transport := &http.Transport{}
 	// 忽略https证书问题
 	transport.TLSClientConfig = &tls.Config{InsecureSkipVerify: true}
@@ -31,7 +20,7 @@ func SendHttp(adminSetting, proxySetting, headerSetting, method, url string) (*h
 		// 创建一个不验证证书的 HTTP 客户端
 		dialer, err := proxy.SOCKS5("tcp", proxySetting, nil, proxy.Direct)
 		if err != nil {
-			return nil, "", fmt.Errorf("代理连接失败")
+			return nil, fmt.Errorf("代理连接失败")
 		}
 		dialContextFunc := func(ctx context.Context, network, addr string) (net.Conn, error) {
 			return dialer.Dial(network, addr)
@@ -44,35 +33,15 @@ func SendHttp(adminSetting, proxySetting, headerSetting, method, url string) (*h
 		Transport: transport,
 	}
 
-	if adminSetting != "" {
-		requestURL := fmt.Sprintf("%s/%s", url, adminSetting)
-		req, err := CreateClient(method, requestURL, headerSetting)
-		if err != nil {
-			return nil, "", err
-		}
-		resp, err := client.Do(req)
-		if err != nil {
-			return nil, "", fmt.Errorf("后台请求失败")
-		}
-		return resp, requestURL, nil
-	} else {
-		for _, v := range admin {
-			requestURL := fmt.Sprintf("%s/%s", url, v)
-			req, err := CreateClient(method, requestURL, headerSetting)
-			if err != nil {
-				continue
-			}
-			resp, err := client.Do(req)
-			if err != nil {
-				continue
-			}
-			if resp.StatusCode != 200 && resp.StatusCode != 301 && resp.StatusCode != 400 && resp.StatusCode != 302 {
-				continue
-			}
-			return resp, requestURL, nil
-		}
+	req, err := CreateClient(method, url, headerSetting)
+	if err != nil {
+		return nil, err
 	}
-	return nil, "", fmt.Errorf("后台请求失败")
+	resp, err := client.Do(req)
+	if err != nil {
+		return nil, fmt.Errorf("后台请求失败")
+	}
+	return resp, nil
 }
 
 // CreateClient 创建一个http

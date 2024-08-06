@@ -2,7 +2,6 @@ package tools
 
 import (
 	"bufio"
-	"flag"
 	"fmt"
 	"log"
 	"os"
@@ -13,23 +12,11 @@ import (
 )
 
 // GetTitle httpx匹配出标题
-func GetTitle(args []string) {
-	fingerCmd := flag.NewFlagSet("finger", flag.ExitOnError)
-	// 定义命令行参数
-	fingerInputFile := fingerCmd.String("f", "", "批量请求的url文件")
-	fingerHelp := fingerCmd.Bool("h", false, "显示帮助信息")
-
-	fingerCmd.Parse(args)
-
-	if *fingerHelp || *fingerInputFile == "" {
-		fmt.Println("Usage of finger:")
-		fingerCmd.PrintDefaults()
-		return
-	}
+func GetTitle(fileName string) {
 
 	// 获取保存文件的绝对路径
 	executablePath, _ := os.Executable()
-	outputPath := fmt.Sprintf("%s\\%s", filepath.Dir(executablePath), *fingerInputFile)
+	outputPath := filepath.Join(filepath.Dir(executablePath), fileName)
 
 	// 执行命令
 	args, ok := common.HttpxConfig["url"].([]string)
@@ -39,6 +26,9 @@ func GetTitle(args []string) {
 
 	args = append(args, "-l")
 	args = append(args, outputPath)
+
+	fmt.Printf("Executing command: httpx %s\n", strings.Join(args, " "))
+
 	// 创建 exec.Command 对象
 	cmd := exec.Command("httpx", args...)
 	// 创建 Stdout 和 Stderr 管道

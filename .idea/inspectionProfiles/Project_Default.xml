@@ -31,6 +31,10 @@
         <method importPath="os" receiver="*File" name="Close" />
         <method importPath="github.com/gocarina/gocsv" receiver="*SafeCSVWriter" name="Write" />
         <method importPath="flag" receiver="*FlagSet" name="Parse" />
+        <method importPath="io" receiver="ReadCloser" name="Close" />
+        <method importPath="github.com/spf13/cobra" receiver="*Command" name="Usage" />
+        <method importPath="github.com/spf13/cobra" receiver="*Command" name="Execute" />
+        <method importPath="github.com/spf13/cobra" receiver="*Command" name="Help" />
       </methods>
     </inspection_tool>
   </profile>
