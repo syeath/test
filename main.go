@@ -69,7 +69,8 @@ func main() {
 		fmt.Println()
 		fmt.Println("  extract	提取域名和ip")
 		fmt.Println("  finger	指纹识别")
-		fmt.Println("  domain	子域名、端口收集")
+		fmt.Println("  domain	子域名收集")
+		fmt.Println("  ip		端口收集")
 		fmt.Println("  path		目录爆破")
 		fmt.Println("  poc		poc识别")
 	}
