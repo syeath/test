@@ -11,7 +11,7 @@ import (
 
 func ParseDomainIP(args []string) {
 
-	extractCmd := flag.NewFlagSet("domain", flag.ExitOnError)
+	extractCmd := flag.NewFlagSet("extract", flag.ExitOnError)
 	// 定义命令行参数
 	extractInputFile := extractCmd.String("f", "", "批量请求的url文件")
 	extractOutputFile := extractCmd.String("o", "", "保存到txt文件中")
@@ -20,7 +20,7 @@ func ParseDomainIP(args []string) {
 	extractCmd.Parse(args)
 
 	if *extractHelp || *extractInputFile == "" {
-		fmt.Println("Usage of domain:")
+		fmt.Println("Usage of extract:")
 		extractCmd.PrintDefaults()
 		return
 	}

@@ -25,17 +25,5 @@ var (
 			"-status-code",
 			"-tech-detect",
 		},
-		// 爆破子域名
-		"domain": []string{
-			"-title",
-			"-status-code",
-			"-tech-detect",
-		},
-		// c段探测
-		"c": []string{},
-		// 指定端口探测
-		"port": []string{},
-		// 爆破指定目录
-		"path": []string{},
 	}
 )

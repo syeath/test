@@ -1,7 +1,0 @@
-URL,Title,Status
-http://182.16.13.165:8880//admin.php,后台管理系统,200
-http://www.yayuvip234.com:8001/admin.php,400 The plain HTTP request was sent to HTTPS port,400
-https://www.yayuvip234.com:8001/admin,代理后台,200
-https://www.yayuvip234.com:8001/admin,代理后台,200
-http://47.90.61.118,NetError,-1
-https://47.90.61.118,NetError,-1
