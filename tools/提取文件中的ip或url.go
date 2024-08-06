@@ -6,7 +6,7 @@ import (
 	"regexp"
 	"strings"
 	"web/common"
-	"web/utils/file"
+	"web/utils"
 )
 
 func ParseDomainIP(args []string) {
@@ -25,7 +25,7 @@ func ParseDomainIP(args []string) {
 		return
 	}
 
-	fileCtx, err := file.ReadText(*extractInputFile)
+	fileCtx, err := utils.ReadText(*extractInputFile)
 	if err != nil {
 		fmt.Println(err)
 		return
@@ -53,6 +53,6 @@ func ParseDomainIP(args []string) {
 			// 添加 https 协议
 			correctedMatch = "https://" + correctedMatch
 		}
-		file.WriteText(*extractOutputFile, correctedMatch)
+		utils.WriteText(*extractOutputFile, correctedMatch)
 	}
 }
